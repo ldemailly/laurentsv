@@ -28,6 +28,8 @@ but I want to write down my first impressions before I forget:
 - Annoying missing super basic like CheckEquals
 - var syntax (and type after var) tripping me up still
 - cute  var ( ... multi line list.. ) syntax (ditto for import)
+- issue with nested struct initialization
+
 
 
 
