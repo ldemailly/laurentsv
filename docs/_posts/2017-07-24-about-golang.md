@@ -5,7 +5,9 @@ title:  "My thoughts about Go (the language)"
 categories: site update
 ---
 
-So I learned a couple of languages over the years:
+I have thoughts about [Go, the board game](https://en.wikipedia.org/wiki/Go_(game)) as well but for today, I'll focus on the computer language:
+
+I learned a couple of programming languages over the years:
 
 - Mainstream 'system' languages: C, C++, Java
 - Mainstream scripting/others: Awk, Lua, Javascript, PHP, Perl, Python, Shell/Bash, Tcl
@@ -13,8 +15,8 @@ So I learned a couple of languages over the years:
 
 Does that makes me qualified to comment on a new (to me) language, well I hope so :-)
 
-So I started learning go in June 2017, 1 month is not enough to be proficient
-but I want to write down my first impressions before I forget:
+I started learning [go](https://golang.org/) in June 2017, 1 month is not enough to be proficient in anything
+but I want to write down my first impressions before I forget and I get too used to the quirks:
 
 - Tabs vs spaces
 - Global variables
@@ -29,9 +31,8 @@ but I want to write down my first impressions before I forget:
 - var syntax (and type after var) tripping me up still
 - cute  var ( ... multi line list.. ) syntax (ditto for import)
 - issue with nested struct initialization
-
-
-
+- good built in benchmark and easy profiler support
+- package dependencies getting dragged in even if not used, big binaries (eg grpc; probably through init())
 
 Testing source code feature:
 {% highlight go %}
