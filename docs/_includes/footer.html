@@ -32,7 +32,8 @@
       </div>
 
       <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
+              <div align="right">{{ site.description }}<br />
+              Built {{site.time | date_to_string | split: ' ' | join: '-'}}</div>
       </div>
     </div>
 
