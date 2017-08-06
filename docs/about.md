@@ -26,14 +26,6 @@ an official statement or related to the positions of my past or current
 employers.
 
 # Site built using Jekyll
-This is built using Jekyll and the base theme.
-You can find out more info about Jekyll by visiting
-[jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for the Jekyll new theme at:
+This is built using [Jekyll](https://jekyllrb.com/) and the
 {% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+[minima](https://github.com/jekyll/minima) theme.
