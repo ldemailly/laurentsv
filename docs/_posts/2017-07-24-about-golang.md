@@ -32,7 +32,8 @@ but I want to write down my first impressions before I forget and I get too used
 - cute  var ( ... multi line list.. ) syntax (ditto for import)
 - issue with nested struct initialization
 - good built in benchmark and easy profiler support
-- package dependencies getting dragged in even if not used, big binaries (eg grpc; probably through init())
+- package dependencies getting dragged in even if not used (eg grpc; probably through init()), leading to:
+- big binaries
 
 Testing source code feature:
 {% highlight go %}
