@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+comments: true
 ---
 
 Having spent 20 years at the best tech companies in Silicon Valley, I want to
