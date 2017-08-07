@@ -18,11 +18,12 @@ author: Laurent Demailly
 description: > # this means to ignore newlines until "baseurl:"
  <a href="https://LaurentSV.com/">LaurentSV.com</a> - Welcome to my Tech Blog.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://LaurentSV.com/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://LaurentSV.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: LaurentDemailly
 github_username:  ldemailly
-disqus.shortname: laurentsv
 google_analytics: UA-103018328-1
+facebook:
+  appid: 337741350005511
 
 # Build settings
 markdown: kramdown

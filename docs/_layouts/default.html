@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+
+        {% if page.comments and site.facebook.appid %}
+        <p>Comments are welcome:</p>
+        {% include facebook-comment-init.html %}
+        <!-- data-href="{{ site.url }}{{ page.url }}" -->
+        <div class="fb-comments" data-width="714" data-numposts="5"></div>
+        {% endif %}
+
+      </div>
+    </main>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>
