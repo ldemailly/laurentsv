@@ -34,6 +34,7 @@ but I want to write down my first impressions before I forget and I get too used
 - good built in benchmark and easy profiler support
 - package dependencies getting dragged in even if not used (eg grpc; probably through init()), leading to:
 - big binaries
+- some silly conventions like having to rename DynamicHttpServer to DynamicHTTPServer (what if it was an https ...)
 
 Testing source code feature:
 {% highlight go %}
