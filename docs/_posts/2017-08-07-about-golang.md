@@ -2,7 +2,7 @@
 layout: post
 title:  "My thoughts about Go (the language)"
 #date:   2017-07-23 23:04:26 -0700
-categories: site update
+categories: blog
 ---
 
 I have thoughts about [Go, the board game](https://en.wikipedia.org/wiki/Go_(game)) as well but for today, I'll focus on the computer language:
