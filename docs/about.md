@@ -27,6 +27,10 @@ an official statement or related to the positions of my past or current
 employers.
 
 # Site built using Jekyll
+
 This is built using [Jekyll](https://jekyllrb.com/) and the
 {% include icon-github.html username="jekyll" %} /
 [minima](https://github.com/jekyll/minima) theme.
+
+The modifications to header/footer/addition of facebook comments, etc...
+are all on {% include icon-github.html username="ldemailly" %} / [laurentsv](https://github.com/ldemailly/laurentsv)
