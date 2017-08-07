@@ -15,7 +15,7 @@
 
         {% if page.comments or page.likebutton and site.facebook.appid %}
         {% include facebook-comment-init.html %}
-        <p><div class="fb-like" data-layout="standard" data-href="{{ site.url }}" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+        <p><div class="fb-like" data-layout="standard" data-href="{{ site.url }}{{ page.url }}" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
             {% if page.comments %}
               <br>Comments are welcome:</p>
               <!-- data-href="{{ site.url }}{{ page.url }}" -->
