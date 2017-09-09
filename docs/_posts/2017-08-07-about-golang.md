@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "My thoughts about Go (the language)"
+title:  "My thoughts about Go (the language, aka golang)"
 #date:   2017-07-23 23:04:26 -0700
 categories: blog
 ---
@@ -30,11 +30,19 @@ but I want to write down my first impressions before I forget and I get too used
 - Annoying missing super basic like CheckEquals
 - var syntax (and type after var) tripping me up still
 - cute  var ( ... multi line list.. ) syntax (ditto for import)
-- issue with nested struct initialization
+- issue with nested struct initialization: can't initialize flat
 - good built in benchmark and easy profiler support
 - package dependencies getting dragged in even if not used (eg grpc; probably through init()), leading to:
 - big binaries
-- some silly conventions like having to rename DynamicHttpServer to DynamicHTTPServer (what if it was an https ...)
+- some silly conventions like having to rename DynamicHttpServer to DynamicHTTPServer (what if it was an https ...) and other un-_readability_ features
+- -x missing in slice access (from the end)
+- append/push_back (mutate array); ... wtf
+- TODO: look at GC (why is there one? why not just like c++ sharde_ptr)
+- new vs make vs &local (!)
+- can't fork/demonize
+- optimize for code reader/reviewer's time, not the writer's : Why not an IDE to fill in types instead of := and C++'s `auto`
+- TODO: look at rust
+- where is my thread local storage
 
 Testing source code feature:
 {% highlight go %}
