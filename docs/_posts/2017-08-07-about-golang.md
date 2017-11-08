@@ -43,6 +43,7 @@ but I want to write down my first impressions before I forget and I get too used
 - optimize for code reader/reviewer's time, not the writer's : Why not an IDE to fill in types instead of := and C++'s `auto`
 - TODO: look at rust
 - where is my thread local storage
+- 'jar' (gar?)
 
 Testing source code feature:
 {% highlight go %}
