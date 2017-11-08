@@ -5,7 +5,7 @@ title:  "My thoughts about Go (the language, aka golang)"
 categories: blog
 ---
 
-I have thoughts about [Go, the board game](https://en.wikipedia.org/wiki/Go_(game)) as well but for today, I'll focus on the computer language:
+I have thoughts about [Go, the board game](https://en.wikipedia.org/wiki/Go_(game)) as well but for today, I'll focus on go the computer language (aka golang):
 
 I learned a couple of programming languages over the years:
 
@@ -18,8 +18,9 @@ Does that makes me qualified to comment on a new (to me) language, well I hope s
 I started learning [go](https://golang.org/) in June 2017, 1 month is not enough to be proficient in anything
 but I want to write down my first impressions before I forget and I get too used to the quirks:
 
-- Tabs vs spaces
+- Tabs vs spaces: it's annoying at first, but actually great as long as there are no mix of spaces and tabs: 100% spaces is my preference because what you see is what you get, but I learned to like 100% tabs so I can set my tab to 2 spaces and everything looks good (except on github or if I was to print, but who prints nowadays)
 - Global variables
+- Visibility through first letter... makes for a lot of unecessary changes when you change your mind on the scope of a function - thank god for global search and replace, but quite sad when looking at a PR/diff/CL with all the noise
 - Annoying directory/file conventions/limitations
 - No const !!
 - Unnatural legal &localObject idiomatic way to construct instances
@@ -43,6 +44,7 @@ but I want to write down my first impressions before I forget and I get too used
 - optimize for code reader/reviewer's time, not the writer's : Why not an IDE to fill in types instead of := and C++'s `auto`
 - TODO: look at rust
 - where is my thread local storage
+- todo: embedded go
 - 'jar' (gar?)
 
 Testing source code feature:
