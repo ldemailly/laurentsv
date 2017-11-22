@@ -46,6 +46,10 @@ but I want to write down my first impressions before I forget and I get too used
 - where is my thread local storage
 - todo: embedded go
 - 'jar' (gar?)
+- hosting or forking a go library shouldn't require changing the source code (the package import)
+- Dependencies
+- linter versioning and cost to lint in CI
+
 
 Testing source code feature:
 {% highlight go %}
