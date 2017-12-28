@@ -38,7 +38,7 @@ Here is a chronological list/menu - let me know which you'd like me to expand up
 - good built in benchmark and easy profiler support
 - package dependencies getting dragged in even if not used (eg grpc; probably through init()), leading to:
 - big binaries
-- some silly conventions like having to rename DynamicHttpServer to DynamicHTTPServer (what if it was an https ...) and other un-_readability_ features
+- some silly conventions like having to rename DynamicHttpServer to DynamicHTTPServer (what if it was an https ...) and other un-<i>readability</i> features
 - -x missing in slice access (from the end)
 - append/push_back (mutate array); ... wtf
 - TODO: look at GC (why is there one? why not just like c++ shared_ptr)
