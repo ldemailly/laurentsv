@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Go docker image: small and simple"
+title:  "Go docker images: small and simple"
 categories: blog
 comments: true
 ---
