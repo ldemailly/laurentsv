@@ -17,16 +17,18 @@ So here we go, minimal stuff:
 # This as of this writing will pick up 1.22.4 - consider adding sha for security
 FROM golang:1.22 as build
 WORKDIR /build/src
-# Splitting this makes it cached layer of your dependencies - it's optional
+# Splitting this makes it a cached layer of your dependencies - it's optional
 COPY go.mod go.sum .
 RUN go mod download
 # Copy the (rest of the) source tree
 COPY . .
 # Real stuff - statically linked, stripped, pure go build
-# Assumes what you build is in the top level, like it should, don't go and add cmd/foo/main.go until
-# you really have more than 1 binary and even then there is probably a main one
-# it also makes `go install github.com/yourname/yourepo@latest` not work/be longer than necessary
-# if you don't put your main at the top, if not and if you must replace . (current package) by ./cmd/foo/
+# Assumes what you build is in the top level, like it should,
+# don't go and add cmd/foo/main.go until you really have more
+# than 1 binary and even then there is probably a main one
+# having cmd/foo also makes `go install github.com/yourname/yourepo@latest`
+# not work (or be longer than necessary) when you don't put your main at the top,
+# but if not and if you must replace . (current package) by ./cmd/foo/
 RUN CGO_ENABLED=0 go build -ldflags="-a -s -w" -o app .
 # This is the important bit
 FROM scratch
@@ -52,7 +54,7 @@ docker run -ti local_build
 Note that if you make https out calls for instance, you'll want to put:
 ([example](https://github.com/fortio/cli/blob/v1.6.0/ca_bundle.go#L14))
 ```
-import _ "golang.org/x/crypto/x509roots/fallback" // default CA bundle for FROM Scratch
+import _ "golang.org/x/crypto/x509roots/fallback" // CA bundle for FROM Scratch
 ```
 in your main - or use [fortio.org/cli](https://pkg.go.dev/fortio.org/cli) for tools or `scli` for servers, which does it (and more!) for you. (allowed me recently this [simplification](https://github.com/fortio/multicurl/pull/146/files#diff-dd2c0eb6ea5cfc6c4bd4eac30934e2d5746747af48fef6da689e85b752f39557))
 
