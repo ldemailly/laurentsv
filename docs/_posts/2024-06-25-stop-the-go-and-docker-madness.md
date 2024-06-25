@@ -28,7 +28,7 @@ COPY . .
 # than 1 binary and even then there is probably a main one
 # having cmd/foo also makes `go install github.com/yourname/yourepo@latest`
 # not work (or be longer than necessary) when you don't put your main at the top,
-# but if not and if you must replace . (current package) by ./cmd/foo/
+# but if not and if you must replace . (current package) by ./cmd/foo/ next line:
 RUN CGO_ENABLED=0 go build -ldflags="-a -s -w" -o app .
 # This is the important bit
 FROM scratch
