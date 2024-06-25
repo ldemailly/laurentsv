@@ -5,9 +5,11 @@ categories: blog
 comments: true
 ---
 
-Ok folks, I'm writing this in anger from seeing people struggle with making very small and very safe docker images, and also overly complicated go project structures.... Stop the madness!
+Ok folks, I'm writing this a bit in anger from seeing people struggle with making very small and very safe docker images, and also overly complicated go project structures.... Stop the madness!
 
 Background: go is an ideal language and platform for making multi OS multi cpu architecture tools and servers - and when you deploy or share your servers through a Docker image (to be used in, say, kubernetes with `containerd`), the smaller the image the better, additionally the fewer files also the better, in particular not having any shell, etc... makes images that much more secure
+
+So while using `FROM scratch` is not new at all (blogs from 8 years ago mentioned it, that's when I started using it), it has become harder to find an up to date yet terse example.
 
 So here we go, minimal stuff:
 
