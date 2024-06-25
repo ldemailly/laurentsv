@@ -47,13 +47,16 @@ Run it/make sure it works:
 docker run -ti local_build
 ```
 
-Note that you'll want to put
-https://github.com/fortio/cli/blob/v1.6.0/ca_bundle.go#L14
+Note that if you make https out calls for instance, you'll want to put:
+([example](https://github.com/fortio/cli/blob/v1.6.0/ca_bundle.go#L14))
 ```
 import _ "golang.org/x/crypto/x509roots/fallback" // default CA bundle for FROM Scratch
 ```
-in your main - or use https://github.com/fortio/cli/ which does it (and more!) for you.
+in your main - or use [fortio.org/cli](https://pkg.go.dev/fortio.org/cli) for tools or `scli` for servers, which does it (and more!) for you.
 
-If you want proper version embeded and easy multiarch, consider the excellent go releaser, you can see how that is used at https://github.com/fortio/multicurl#multicurl and https://github.com/fortio/workflows/blob/main/.github/workflows/releaser.yml
+And possibly copy a /etc/mime.types from the base - see the excellent [Xe's adventure](https://xeiaso.net/blog/2024/fixing-rss-mailcap/) about that file.
 
-Ping me on gopher slack (Laurent Demailly) or discord (_dl) if you disagree, have comments etc... or open an issue https://github.com/ldemailly/laurentsv/issues
+
+If you want proper version embeded and easy multiarch, consider the excellent go releaser, you can see how that is used at [github.com/fortio/multicurl](https://github.com/fortio/multicurl#multicurl) and [github.com/fortio/workflows/blob/main/.github/workflows/releaser.yml](https://github.com/fortio/workflows/blob/main/.github/workflows/releaser.yml)
+
+Ping me on gopher slack (Laurent Demailly) or discord (_dl) if you disagree, have comments etc... or open an [issue](https://github.com/ldemailly/laurentsv/issues)
