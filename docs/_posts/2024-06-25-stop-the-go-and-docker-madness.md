@@ -2,7 +2,7 @@
 layout: post
 title:  "Go docker images: small and simple"
 categories: blog
-comments: true
+comments: false # they are broken
 ---
 
 Ok folks, I'm writing this a bit in anger from seeing people struggle with making very small and very safe docker images, and also overly complicated go project structures.... Stop the madness!
@@ -54,7 +54,7 @@ Note that if you make https out calls for instance, you'll want to put:
 ```
 import _ "golang.org/x/crypto/x509roots/fallback" // default CA bundle for FROM Scratch
 ```
-in your main - or use [fortio.org/cli](https://pkg.go.dev/fortio.org/cli) for tools or `scli` for servers, which does it (and more!) for you.
+in your main - or use [fortio.org/cli](https://pkg.go.dev/fortio.org/cli) for tools or `scli` for servers, which does it (and more!) for you. (allowed me recently this [simplification](https://github.com/fortio/multicurl/pull/146/files#diff-dd2c0eb6ea5cfc6c4bd4eac30934e2d5746747af48fef6da689e85b752f39557))
 
 And possibly copy a /etc/mime.types from the base - see the excellent [Xe's adventure](https://xeiaso.net/blog/2024/fixing-rss-mailcap/) about that file.
 
