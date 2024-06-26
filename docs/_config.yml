@@ -28,8 +28,13 @@ facebook:
 # Build settings
 markdown: kramdown
 theme: minima
-gems:
+plugins:
   - jekyll-feed
+  - jekyll-last-modified-at
 exclude:
   - Gemfile
   - Gemfile.lock
+  - vendor
+
+minima:
+  skin: auto
