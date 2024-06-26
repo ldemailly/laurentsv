@@ -3,7 +3,8 @@ layout: post
 title:  "Go docker images: small and simple"
 categories: blog
 comments: true # they still work!
-last_modified_at: 2024-06-26 08:59:47 -0700
+date: 2024-06-25
+modified_date: 2024-06-26 08:59:47 -0700
 ---
 
 Ok folks, I'm writing this a bit in anger from seeing people struggle with making very small and very safe docker images, and also overly complicated go project structures.... Stop the madness!
