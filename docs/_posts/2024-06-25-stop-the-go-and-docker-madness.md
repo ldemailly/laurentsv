@@ -2,7 +2,7 @@
 layout: post
 title:  "Go docker images: small and simple"
 categories: blog
-comments: false # they are broken
+comments: true # they still work!
 ---
 
 Ok folks, I'm writing this a bit in anger from seeing people struggle with making very small and very safe docker images, and also overly complicated go project structures.... Stop the madness!
@@ -64,3 +64,4 @@ And possibly copy a /etc/mime.types from the base - see the excellent [Xe's adve
 If you want proper version embeded and easy multiarch, consider the excellent go releaser, you can see how that is used at [github.com/fortio/multicurl](https://github.com/fortio/multicurl#multicurl) and [github.com/fortio/workflows/blob/main/.github/workflows/releaser.yml](https://github.com/fortio/workflows/blob/main/.github/workflows/releaser.yml)
 
 Ping me on gopher slack (Laurent Demailly) or discord (_dl) if you disagree, have comments etc... or open an [issue](https://github.com/ldemailly/laurentsv/issues)
+or comment directly below if you're on facebook.
