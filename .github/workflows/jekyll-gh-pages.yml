@@ -43,6 +43,8 @@ jobs:
       - name: Build with Jekyll
         run: |
           cd docs
+          ls -a
+          bundle install
           bundle exec jekyll build --destination ../_site
           grep "Created" -A5  ../_site/blog/2024/06/25/stop-the-go-and-docker-madness.html
       - name: Upload artifact
