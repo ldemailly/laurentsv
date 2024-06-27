@@ -11,7 +11,7 @@ Ok folks, I'm writing this a bit in anger from seeing people struggle with makin
 
 Background: go is an ideal language and platform for making multi OS multi cpu architecture tools and servers - and when you deploy or share your servers through a Docker image (to be used in, say, kubernetes with `containerd`), the smaller the image the better, additionally the fewer files also the better, in particular not having any shell, etc... makes images that much more secure
 
-So while using `FROM scratch` is not new at all (blogs from 8 years ago mentioned it, that's when I started using it), it has become harder to find an up to date yet terse example.
+So while using multi stage builds and `FROM scratch` (which means empty/nothing in the image to start with) as the last stage is not new at all (blogs from 8 years ago mentioned it, that's when I started using it), it has become harder to find an up to date yet terse example.
 
 So here we go, minimal stuff:
 
@@ -32,7 +32,7 @@ COPY . .
 # not work (or be longer than necessary) when you don't put your main at the top,
 # but if not and if you must replace . (current package) by ./cmd/foo/ next line:
 RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o app .
-# This is the important bit
+# This is the important bit, making for a final image with just your binary:
 FROM scratch
 COPY --from=build /build/src/app /usr/bin/app
 # Not needed anymore, see below why/how
@@ -53,6 +53,17 @@ local_build   latest    96f0a048d99c   2 minutes ago   13.1MB
 Run it/make sure it works:
 ```
 docker run -ti local_build
+```
+
+ps: Skipping the comments and optional step, our Dockerfile is as short and simple as 6 lines - yet yield optimal smallest images
+
+```Dockerfile
+FROM golang:1.22 as build
+COPY . .
+RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o app .
+FROM scratch
+COPY --from=build /build/src/app /usr/bin/app
+ENTRYPOINT ["/usr/bin/app"]
 ```
 
 About the build command, the key piece is `CGO_ENABLED=0` which means your code and dependencies must be pure go (which is a good thing for sanity, safety and performance reasons too) and that enables standalone binaries. I used to have `-a` in there which ages ago meant static linking, but with CGO off, static linking is what you get and I was kindly pointed out `-a` isn't a thing anymore. The `-s` (strip) and `-w` (remove dwarf info) in `-ldflags` do reduce the binary size.
