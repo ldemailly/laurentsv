@@ -31,7 +31,7 @@ COPY . .
 # having cmd/foo also makes `go install github.com/yourname/yourepo@latest`
 # not work (or be longer than necessary) when you don't put your main at the top,
 # but if not and if you must replace . (current package) by ./cmd/foo/ next line:
-RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o app .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o app .
 # This is the important bit, making for a final image with just your binary:
 FROM scratch
 COPY --from=build /build/src/app /usr/bin/app
@@ -57,20 +57,34 @@ docker run -ti local_build
 
 ps: Skipping the comments and optional step, our Dockerfile is as short and simple as 6 lines - yet yield optimal smallest images
 
+### Short and sweet
+
 ```Dockerfile
 FROM golang:1.22 as build
 COPY . .
-RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o app .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o app .
 FROM scratch
 COPY --from=build /build/src/app /usr/bin/app
 ENTRYPOINT ["/usr/bin/app"]
 ```
 
-About the build command, the key piece is `CGO_ENABLED=0` which means your code and dependencies must be pure go (which is a good thing for sanity, safety and performance reasons too) and that enables standalone binaries. I used to have `-a` in there which ages ago meant static linking, but with CGO off, static linking is what you get and I was kindly pointed out `-a` isn't a thing anymore. The `-s` (strip) and `-w` (remove dwarf info) in `-ldflags` do reduce the binary size.
+### The `go build` command we use, explained
 
-If you must use cgo or worse you're not even using go at all (my condoleances), then using [distro less](https://github.com/GoogleContainerTools/distroless) base is the next best thing.
+The key piece is `CGO_ENABLED=0` which means your code and dependencies must be pure go (which is a good thing for sanity, safety and performance reasons too) and that enables standalone binaries. I used to have `-a` in there which ages ago and in older `ld` meant static linking, but with CGO off, static linking is what you get and I was kindly pointed out `-a` isn't a thing anymore.
 
-**Note** that if you make `https` out calls for instance, you'll want to put:
+The `-s` (strip) and `-w` (remove dwarf info) in `-ldflags` do reduce the binary size significantly.
+
+And `-trimpath` removes all file system paths from the compiled executable, replacing them with the base names. This helps in creating reproducible builds by eliminating references to the local file paths. It doesn't actually do anything different size wise in this case because the golang base image is using the standard canonical paths, but it would make a small difference when building on a mac with homebrew's go for instance (~32k for fortio).
+
+### No cgo, no go?
+
+If you must use cgo(*) or worse you're not even using go at all (my condoleances), then using [distro less](https://github.com/GoogleContainerTools/distroless) base is the next best thing.
+
+*: For cgo you can still create statically linked binaries, the hard way pending [this go issue](https://github.com/golang/go/issues/26492) being implemented.
+
+### What about the network, TLS and https (mime-types?)
+
+If you make `https` out calls for instance, you'll want to put:
 ([example](https://github.com/fortio/cli/blob/v1.6.0/ca_bundle.go#L14))
 ```
 import _ "golang.org/x/crypto/x509roots/fallback" // CA bundle for FROM Scratch
@@ -79,8 +93,11 @@ in your main - or use [fortio.org/cli](https://pkg.go.dev/fortio.org/cli) for to
 
 And possibly copy a `/etc/mime.types` from the build layer - see the excellent [Xe's adventure](https://xeiaso.net/blog/2024/fixing-rss-mailcap/) about that file.
 
+### What about multi-architecture (arm64/apple silicon vs x86_64 amd)
 
-If you want proper version embedded and easy multiarch, consider the excellent go releaser, you can see how that is used at [github.com/fortio/multicurl](https://github.com/fortio/multicurl#multicurl) and [github.com/fortio/workflows/blob/main/.github/workflows/releaser.yml](https://github.com/fortio/workflows/blob/main/.github/workflows/releaser.yml) - or do it the [hard way](https://github.com/fortio/fortio/blob/v1.65.0/Makefile#L188-L198) as I do still in fortio's original main package.
+If you want proper version embedded and easy multiarch, consider the excellent [go releaser](https://goreleaser.com/), you can see how that is used at [github.com/fortio/multicurl](https://github.com/fortio/multicurl#multicurl) and [github.com/fortio/workflows/blob/main/.github/workflows/releaser.yml](https://github.com/fortio/workflows/blob/main/.github/workflows/releaser.yml) - or do it the [hard way](https://github.com/fortio/fortio/blob/v1.65.0/Makefile#L188-L198) as I do still in fortio's original main package.
+
+### But...
 
 Ping me on gopher slack (Laurent Demailly) or discord (_dl) if you disagree, have comments etc... or open an [issue](https://github.com/ldemailly/laurentsv/issues)
 or comment directly below if you're on facebook.
