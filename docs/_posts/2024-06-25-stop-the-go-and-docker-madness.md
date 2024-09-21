@@ -16,7 +16,7 @@ So while using multi stage builds and `FROM scratch` (which means empty/nothing 
 So here we go, minimal stuff:
 
 ```Dockerfile
-# This as of this writing will pick up 1.22.4 - consider adding sha for security
+# This as of this writing will pick up 1.22.7 - consider adding sha for security
 FROM golang:1.22 as build
 WORKDIR /build/src
 # Splitting this makes it a cached layer of your dependencies - it's optional
@@ -61,6 +61,7 @@ ps: Skipping the comments and optional step, our Dockerfile is as short and simp
 
 ```Dockerfile
 FROM golang:1.22 as build
+WORKDIR /build/src
 COPY . .
 RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o app .
 FROM scratch
@@ -92,6 +93,38 @@ import _ "golang.org/x/crypto/x509roots/fallback" // CA bundle for FROM Scratch
 in your main - or use [fortio.org/cli](https://pkg.go.dev/fortio.org/cli) for tools or [scli](https://pkg.go.dev/fortio.org/scli)  for servers, which does it (and more!) for you. (allowed me recently this [simplification](https://github.com/fortio/multicurl/pull/146/files#diff-dd2c0eb6ea5cfc6c4bd4eac30934e2d5746747af48fef6da689e85b752f39557))
 
 And possibly copy a `/etc/mime.types` from the build layer - see the excellent [Xe's adventure](https://xeiaso.net/blog/2024/fixing-rss-mailcap/) about that file.
+
+### What about ports, volumes etc...
+
+That starts to get more advanced but see the following examples:
+[fortio's Dockerfile](https://github.com/fortio/fortio/blob/master/Dockerfile)
+```Dockerfile
+EXPOSE 8080
+# configmap (dynamic flags)
+VOLUME /etc/fortio
+# data files etc
+VOLUME /var/lib/fortio
+WORKDIR /var/lib/fortio
+ENTRYPOINT ["/usr/bin/fortio"]
+# start the server mode (grpc ping on 8079, http echo and UI on 8080, redirector on 8081) by default
+CMD ["server", "-config-dir", "/etc/fortio"]
+```
+
+### Users, security context etc...
+
+Also a bit more advanced but best left externalized, see for instance
+[fortio's security context in the helm chart](https://github.com/fortio/fortio-demo-chart/blob/main/defaults/fortio/values.yaml.gotmpl)
+```yaml
+commonSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+  seccompProfile:
+    type: RuntimeDefault
+```
 
 ### What about multi-architecture (arm64/apple silicon vs x86_64 amd)
 
