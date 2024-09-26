@@ -64,9 +64,10 @@ What I also learned since:
 - Gofumpt the better go fmt: [github.com/mvdan/gofumpt](https://github.com/mvdan/gofumpt)
 - Shared workflows [github.com/fortio/workflows](https://github.com/fortio/workflows)
 - [golangci-lint](https://golangci-lint.run/) config [github.com/fortio/workflows/blob/main/golangci.yml](https://github.com/fortio/workflows/blob/main/golangci.yml)
+- [goreleaser](https://goreleaser.com/)
 - Keep your repo simple, don't over do packages, directories, etc: [go-standard/project-layout](https://github.com/go-standard/project-layout#project-layout) (though I don't agree with agile but the conclusions there are still better than most overly complicated recommendations you can sadly find all over)
 - [github.com/fortio/version](https://github.com/fortio/version) and the rest of the fortio ecosystems I hope you can find useful (cli and server shells, dynamic flags, sets, safecast, terminal stuff, etc etc..)
-- [grol.io](grol.io) open source scripting language go syntax like, Tcl spirit like, I've been having fun writing.
+- [grol.io](https://grol.io/) open source scripting language go syntax like, Tcl spirit like, I've been having fun writing.
 
 ### But...
 
