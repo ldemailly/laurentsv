@@ -7,7 +7,7 @@ date: 2024-09-26
 modified_date: 2024-09-26 10:40:00 -0700
 ---
 
-7 years ago I had just started learning go and wrote down [my thoughts]( 2017-12-28-about-golang), it may be useful you quickly scan that previous post as I'm going to go in the same order more or less.
+7 years ago I had just started learning go and wrote down [my thoughts: part Ⅰ](/blog/2017/12/28/about-golang.html), it may be useful you quickly scan that previous post as I'm going to go in the same order more or less.
 
 So let's go over what I learned since, what changed and newer thoughts from many years of professional as well as OSS golang experience:
 
