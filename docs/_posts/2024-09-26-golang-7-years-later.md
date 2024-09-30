@@ -57,7 +57,11 @@ What I also learned since:
 
 - Annoyance: even with grouped dependabot, dependencies update is quite a chore. But govulncheck, dependabot, linters, bug fixes, etc... help keeping our ecosystem healthy and it has to get done.
 
-- golangci-lint: (mostly) great, but quite an horrible name... I can't for the life of me remember if it's golanglint-ci (like maybe it should) or some other variations... thankfully gol<tab> works when I need.
+- golangci-lint: (mostly) great, but quite an horrible name... I can't for the life of me remember if it's golanglint-ci (like maybe it should) or some other variations... thankfully `gol<tab>` works when I need.
+
+- Generics: great... better late than never... except you very often end up needing a rather ugly and annoying `switch v := any(&val).(type) {` or two.
+
+- `:=` <-> `=` dance when moving code around is also a bit annoying.
 
 ### References
 
