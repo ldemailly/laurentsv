@@ -16,14 +16,13 @@ One main philosophy for go, is keeping things simple. More code writing, less st
 
 The official guide on this topic is [go.dev/doc/modules/layout](https://go.dev/doc/modules/layout) yet people still tend to over complicated, it says
 
-> **Larger** packages or commands **may** benefit from splitting off some functionality into supporting packages.
+> **Larger** packages or commands **may** benefit from splitting off some functionality into supporting packages. **Initially,** it’s recommended placing such packages into a directory named internal; [...] Since other projects cannot import code from our internal directory, we’re free to refactor its API and generally move things around without breaking external users.
 
-Emphasis on larger and may is mine. And seems to be missed by many. 99% of people do not need `internal/` when, be real, most of what gets written will never be reused much and even if it is, don't worry about over publishing.
+Emphasis on _larger_ and _may_ is mine. And seems to be missed by many. 99% of people do not need `internal/` when, be real, most of what gets written will never be reused much and even if it is, don't worry about over publishing. And the initially is actually in my opinion wrong... initially... make something useful and don't worry that it'll get such great adoption that you're stuck into maintaining your early layout forever, you're not... (see semver point below too).
 
 Likewise, you don't need to use `cmd/` when you only have 1 binary (or even a few and no library)
 
 In general because a feature exists, doesn't mean to have to use it (e.g `internal/`). Or because some people have a convention doesn't mean you should follow (like your mom probably use to say "if they jump off a bridge... will you?" ).
-
 
 By the way, stick to 0.x semver (another pet peeve of mine is the v2/v3/... in go) for as long as you can and document what you change and why, rather than under publish and force people to fork to access what they really need and you didn't forsee.
 
