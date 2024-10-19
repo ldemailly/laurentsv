@@ -46,7 +46,9 @@ For many small to medium size projects these are the only packages you need.
 
 #### internal/
 
-You don't need that, unless you're shipping code to _a lot_ of third party users and have a lot of code that can't just be lower case not exported, yet used in many exported packages, you don't need to hide your code... it's not so precious or such a huge commitment.
+Just in case you do not know already, as a refresher, `internal/` is not a convention, it's a feature of the go tool chain: code in or below such directory is importable only by code in the directory tree rooted at the parent of `internal/`.
+
+But you don't need that, unless you're shipping code to _a lot_ of third party users and have a lot of code that can't just be lower case not exported, yet used in many exported packages, you don't need to hide your code... it's not so precious or such a huge commitment.
 
 #### pkg/
 
