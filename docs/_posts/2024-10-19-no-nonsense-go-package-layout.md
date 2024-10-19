@@ -92,3 +92,5 @@ Library + clis:
 
 Ping me on gopher slack (Laurent Demailly) or discord (_dl) if you disagree, have comments etc... or open an [issue](https://github.com/ldemailly/laurentsv/issues)
 or comment directly below if you're on facebook.
+
+See also / you might like [my other thoughts on go](/blog/2024/09/26/golang-7-years-later.html)

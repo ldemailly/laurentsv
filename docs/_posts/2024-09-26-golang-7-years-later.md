@@ -17,7 +17,7 @@ So let's go over what I learned since, what changed and newer thoughts from many
 
 - Visibility through casing of first letter: you get used to it, it's convenient/expressive, yet still annoying to change - but vscode does a good job at renaming symbols (but it does make for big diffs when you do)
 
-- One binary per directory is still annoying and makes people use that horrible cmd/ convention (yes I don't like it! I'll make another post about overly complicated repo layout later but see references meanwhile)
+- One binary per directory is still annoying and makes people use that horrible cmd/ convention (yes I don't like it! I'll make another post about overly complicated repo layout later but see references meanwhile - EDIT: I did, see [No nonsense guide to go package layout](/blog/2024/10/19/no-nonsense-go-package-layout.html))
 
 - No const: that one is still annoying me... you can only have very primitive types as const, not even arrays or struct. And you can't declare that your function isn't going to mutate the arguments either. What's so hard about putting more stuff in text segment... or checking what the function does... Yes I saw the FAQ... While the go team does amazing job most of the time, they like everyone (me too, clearly!) have blind spots. Anyway, one saving grace is that passing mid size structs by value is actually not expensive and the compiler can optimize. And passing by value is the best way to guarantee const (well... except slices etc...)
 
@@ -72,6 +72,7 @@ What I also learned since:
 - Keep your repo simple, don't over do packages, directories, etc: [go-standard/project-layout](https://github.com/go-standard/project-layout#project-layout) (though I don't agree with agile but the conclusions there are still better than most overly complicated recommendations you can sadly find all over)
 - [github.com/fortio/version](https://github.com/fortio/version) and the rest of the fortio ecosystems I hope you can find useful (cli and server shells, dynamic flags, sets, safecast, terminal stuff, etc etc..)
 - [grol.io](https://grol.io/) open source scripting language go syntax like, Tcl spirit like, I've been having fun writing.
+- [No nonsense guide to go package layout](/blog/2024/10/19/no-nonsense-go-package-layout.html)
 
 ### But...
 
