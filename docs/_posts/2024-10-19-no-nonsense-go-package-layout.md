@@ -24,7 +24,7 @@ Likewise, you don't need to use `cmd/` when you only have 1 binary (or even a fe
 
 In general because a feature exists, doesn't mean to have to use it (e.g `internal/`). Or because some people have a convention doesn't mean you should follow (like your mom probably used to say "if they jump off a bridge... will you?", remember? ).
 
-By the way, stick to 0.x semver (another pet peeve of mine is the v2/v3/... in go) for as long as you can and document what you change and why, rather than under publish and force people to fork to access what they really need and you didn't forsee.
+By the way, stick to 0.x semver (another pet peeve of mine is the v2/v3/... in go) for as long as you can and document what you change and why, rather than under publish and force people to fork to access what they really need and you didn't foresee.
 
 ### The bad
 
@@ -55,7 +55,7 @@ But you don't need that, unless you're shipping code to _a lot_ of third party u
 Any package you put into a pkg directory can be moved the root.
 `pkg` is a very outdated convention from before `internal/` (and you saw what I think about internal/).
 
-Some people think that having packages at the top, "clutters", the directory... first what does get cluttered if you add unnecessary directory layers is every single import in dozen of files and possibly hundreds of dependencies... think about them... Second, feel free to move the various docs etc to some subdirectory. Lastly what is 'clutter' navigation probably comes through your "godoc".
+Some people think that having packages at the top, "clutters", the directory... first what does get cluttered if you add unnecessary directory layers is every single import in dozen of files and possibly hundreds of dependencies... think about them... Second, feel free to move the various docs etc to some subdirectory. Lastly what is 'clutter' navigation probably comes through your "godoc" (the excellent [pkg.go.dev](https://pkg.go.dev/) or your self hosted equivalent for private repositories).
 
 Btw don't get me started with repos that have dozens of files and that to see what is going on not using an idea you have to go main.go -> some other file -> some init file -> some start function -> some other files... while all this could be in 1 or 2 places, easier to follow and find.
 
@@ -91,6 +91,8 @@ Library + clis:
 
 
 ### But...
+
+This post is partially in response to what I see is over complication in many small projects, which isn’t to say it’s always right or applicable either, but if it gets folks to pause and consider, even to disagree. I think it’s mission accomplished.
 
 Ping me on gopher slack (Laurent Demailly) or discord (_dl) if you disagree, have comments etc... or open an [issue](https://github.com/ldemailly/laurentsv/issues)
 or comment directly below if you're on facebook.
