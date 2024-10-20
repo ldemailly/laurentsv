@@ -75,19 +75,17 @@ You can have more than 1 file in a package/directory in go. You don't need to ma
 
 There are lots of example of overly complicated repos. I'd give my own repos but they also evolved organically and aren't actually that good/or simple, but here we go anyway:
 
-Packages in [github.com/fortio/](http://github.com/fortio/)
+Repositories in [github.com/fortio/](http://github.com/fortio/)
 
-Server example:
-- [github.com/fortio/proxy](https://github.com/fortio/proxy)
+Server example: [github.com/fortio/proxy](https://github.com/fortio/proxy)
 
-Cli example:
-- [github.com/fortio/multicurl](https://github.com/fortio/multicurl)
+CLI example: [github.com/fortio/multicurl](https://github.com/fortio/multicurl)
 
-Server + libraries + cli:
-- [github.com/fortio/fortio](https://github.com/fortio/fortio)
+Server + libraries + cli: [github.com/fortio/fortio](https://github.com/fortio/fortio)
 
-Library + clis:
-- That one is somewhat odly setup as it has 2 libraries, one at the root where it started and a newer one, so not exactly best [github.com/fortio/terminal](https://github.com/fortio/terminal)
+Library + CLIs: that one is somewhat oddly setup as it has 2 libraries, one at the root where it started and a newer one, so not exactly best practices [github.com/fortio/terminal](https://github.com/fortio/terminal)
+
+Language with CLI, libraries and wasm target: [github.com/grol-io/grol](https://github.com/grol-io/grol)
 
 
 ### But...
