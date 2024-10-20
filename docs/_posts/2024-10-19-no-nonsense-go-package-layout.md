@@ -95,4 +95,6 @@ This post is partially in response to what I see is over complication in many sm
 Ping me on gopher slack (Laurent Demailly) or discord (_dl) if you disagree, have comments etc... or open an [issue](https://github.com/ldemailly/laurentsv/issues)
 or comment directly below if you're on facebook.
 
-See also / you might like [my other thoughts on go](/blog/2024/09/26/golang-7-years-later.html)
+### In the same vein
+
+You might like [simple effective 7 lines Dockerfile and minimal sized images](/blog/2024/06/25/stop-the-go-and-docker-madness.html) and [my other thoughts on go](/blog/2024/09/26/golang-7-years-later.html).
