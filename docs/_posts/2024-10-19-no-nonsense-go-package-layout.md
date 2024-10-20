@@ -14,7 +14,7 @@ One main philosophy for go, is keeping things simple. More code writing, less st
 
 ### Official
 
-The official guide on this topic is [go.dev/doc/modules/layout](https://go.dev/doc/modules/layout) yet people still tend to over complicated, it says
+The official guide on this topic is [go.dev/doc/modules/layout](https://go.dev/doc/modules/layout) - which you should read if you haven't already, then come back here. Despite that reference (and maybe in part because of it) people still tend to over complicate. For instance it says
 
 > **Larger** packages or commands **may** benefit from splitting off some functionality into supporting packages. **Initially,** it’s recommended placing such packages into a directory named internal; [...] Since other projects cannot import code from our internal directory, we’re free to refactor its API and generally move things around without breaking external users.
 
