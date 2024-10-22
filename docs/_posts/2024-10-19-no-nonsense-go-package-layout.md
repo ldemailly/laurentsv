@@ -7,10 +7,10 @@ date: 2024-10-19
 modified_date: 2024-10-19 14:19:47 -0700
 ---
 
-It's a recurring question on gopher slack and discord: "How should I setup my go project repository?".
-And unfortunately there is a *lot* of both outdated and overly complicated blogs and sample or old projects out there.
+It's a recurring question on gopher slack and discord: «How should I set up my go project repository?».
+Unfortunately, there are a *lot* of both outdated and overly complicated blogs, sample repositories and old projects out there.
 
-One main philosophy for go, is keeping things simple. More code writing, less structuring ahead of time / before it's actually needed.
+One key philosophy of Go, is keeping things simple. More code writing, less structuring ahead of time / before it's actually needed.
 
 ### Official
 
@@ -18,17 +18,17 @@ The official guide on this topic is [go.dev/doc/modules/layout](https://go.dev/d
 
 > **Larger** packages or commands **may** benefit from splitting off some functionality into supporting packages. **Initially,** it’s recommended placing such packages into a directory named internal; [...] Since other projects cannot import code from our internal directory, we’re free to refactor its API and generally move things around without breaking external users.
 
-Emphasis on _larger_ and _may_ is mine. And seems to be missed by many. 99% of people do not need `internal/` when, be real, most of what gets written will never be reused much and even if it is, don't worry about over publishing. And the initially is actually in my opinion wrong... initially... make something useful and don't worry that it'll get such great adoption that you're stuck into maintaining your early layout forever, you're not... (see semver point below too).
+Emphasis on _larger_ and _may_ is mine. And seems to be missed by many. 99% of people do not need `internal/` when, be real, most of what gets written will never be reused much and even if it is, don't worry about over publishing. And the _initially_ is, in my opinion wrong.Initially, make something useful and don't worry that it'll get such great adoption that you're stuck into maintaining your early layout forever, you're not... (see semver point below too).
 
-Likewise, you don't need to use `cmd/` when you only have 1 binary (or even a few and no library)
+Likewise, you don't need to use `cmd/` when you only have 1 binary (or even a few and no library).
 
 In general because a feature exists, doesn't mean to have to use it (e.g `internal/`). Or because some people have a convention doesn't mean you should follow (like your mom probably used to say "if they jump off a bridge... will you?", remember? ).
 
-By the way, stick to 0.x semver (another pet peeve of mine is the v2/v3/... in go) for as long as you can and document what you change and why, rather than under publish and force people to fork to access what they really need and you didn't foresee.
+By the way, stick to 0.x semver (another pet peeve of mine is the v2/v3/... in go) for as long as you can and document what you change and why, rather than under-publishing and forcing people to fork to access what they really need and you didn't foresee.
 
 ### The bad
 
-So one infamous example of the nonsense is the fake "golang-standards" - see [github.com/golang-standards/project-layout/issues/117](https://github.com/golang-standards/project-layout/issues/117) and other closed issues for why it's _not_ a standard. Which led folks to come up with a counter point at [github.com/go-standard/project-layout](https://github.com/go-standard/project-layout) (which I contributed a few additions/corrections) but also got slack for having the word "standard" in it... so here you go, below is _my_ **opinion** (based on decades of professional experience in many languages, including 7 years of go at top companies and OSS projects) - Some of the text comes from there:
+So one infamous example of the nonsense is the fake "golang-standards" - see [github.com/golang-standards/project-layout/issues/117](https://github.com/golang-standards/project-layout/issues/117) and other closed issues for why it's _not_ a standard. This led folks to come up with a counter point at [github.com/go-standard/project-layout](https://github.com/go-standard/project-layout) (which I contributed a few additions/corrections) but also got flak for having the word "standard" in it... so here you go, below is _my_ **opinion** (based on decades of professional experience in many languages, including 7 years of go at top companies and OSS projects) - Some of the text comes from there:
 
 ### My Take
 
@@ -38,11 +38,11 @@ Main package in the root is great, it makes for the shortest and cleanest instal
 ```sh
 go install github.com/you/project@latest
 ```
-Which is typically the priority if you do have a cli or server to ship. Pure libraries obviously have no main at the root.
+Which is typically the priority if you do have a CLI or server to ship. Pure libraries obviously have no main at the root.
 
 If you do have both, you could move the main out of the way in a child directory (people like `cmd/execname/` but the `cmd/` part is actually not needed) or move the library into a directory that will make importing and using it readable. Consider also you may have more than 1 library package to publish in which case `lib1/` and `lib2/` makes total sense and keep the top level for the main binary.
 
-For many small to medium size projects these are the only packages you need.
+For many small to medium-sized projects, these are the only packages you need.
 
 #### internal/
 
@@ -52,12 +52,12 @@ But you don't need that, unless you're shipping code to _a lot_ of third party u
 
 #### pkg/
 
-Any package you put into a pkg directory can be moved the root.
+Any package you put into a pkg directory can be moved to the root.
 `pkg` is a very outdated convention from before `internal/` (and you saw what I think about internal/).
 
-Some people think that having packages at the top, "clutters", the directory... first what does get cluttered if you add unnecessary directory layers is every single import in dozen of files and possibly hundreds of dependencies... think about them... Second, feel free to move the various docs etc to some subdirectory. Lastly what is 'clutter' navigation probably comes through your "godoc" (the excellent [pkg.go.dev](https://pkg.go.dev/) or your self hosted equivalent for private repositories).
+Some people think that having packages at the top, "clutters", the directory. First what does get cluttered if you add unnecessary directory layers is every single import in dozen of files and possibly hundreds of dependencies... think about them! Second, feel free to move the various docs, ancillary files, etc to some subdirectory. Lastly what is 'clutter' really, navigation through the code probably comes through your "godoc" (the excellent [pkg.go.dev](https://pkg.go.dev/), or your self hosted equivalent for private repositories).
 
-Btw don't get me started with repos that have dozens of packages and files and where to see what is going on without an IDE you have to go: main.go -> some other file -> some init file -> some start function -> some other files... while all this could be in 1 or 2 places, easier to follow and find.
+Btw don't get me started with repos that have dozens of packages and files and where to see what is going on without an IDE, you have to go: main.go -> some other file -> some init file -> some start function -> some other files... while all this could be in 1 or 2 places, easier to follow and find.
 
 #### util/
 
@@ -81,9 +81,9 @@ Server example: [github.com/fortio/proxy](https://github.com/fortio/proxy)
 
 CLI example: [github.com/fortio/multicurl](https://github.com/fortio/multicurl)
 
-Server + libraries + cli: [github.com/fortio/fortio](https://github.com/fortio/fortio)
+Server + libraries + CLI: [github.com/fortio/fortio](https://github.com/fortio/fortio)
 
-Library + CLIs: that one is somewhat oddly setup as it has 2 libraries, one at the root where it started and a newer one, so not exactly best practices [github.com/fortio/terminal](https://github.com/fortio/terminal)
+Library + CLIs: that one is somewhat oddly set up as it has 2 libraries, one at the root where it started and a newer one, so not exactly best practices [github.com/fortio/terminal](https://github.com/fortio/terminal)
 
 Language with CLI, libraries and wasm target: [github.com/grol-io/grol](https://github.com/grol-io/grol)
 
