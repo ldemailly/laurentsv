@@ -10,7 +10,7 @@ modified_date: 2024-10-19 14:19:47 -0700
 It's a recurring question on gopher slack and discord: «How should I set up my go project repository?».
 Unfortunately, there are a *lot* of both outdated and overly complicated blogs, sample repositories and old projects out there.
 
-One key philosophy of Go, is keeping things simple. More code writing, less structuring ahead of time / before it's actually needed.
+One key philosophy of Go, is keeping things simple. More code writing, less structuring ahead of time (before it's actually needed).
 
 ### Official
 
