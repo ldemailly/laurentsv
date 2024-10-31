@@ -19,13 +19,17 @@
         <ul class="social-media-list">
           {% if site.github_username %}
           <li>
-            {% include icon-github.html username=site.github_username %}
+            <a href="https://github.com/{{ site.github_username }}">
+              <svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg>
+            </a>
           </li>
           {% endif %}
 
           {% if site.twitter_username %}
           <li>
-            {% include icon-twitter.html username=site.twitter_username %}
+            <a href="https://x.com/{{ site.twitter_username }}">
+              <svg class="svg-icon grey"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg>
+            </a>
           </li>
           {% endif %}
         </ul>

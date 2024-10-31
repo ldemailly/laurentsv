@@ -30,9 +30,6 @@ And obviously the opinions of the commenters is theirs.
 
 # Site built using Jekyll
 
-This is built using [Jekyll](https://jekyllrb.com/) and the
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima) theme.
+This is built using [Jekyll](https://jekyllrb.com/) and the [github.com/jekyll/minima](https://github.com/jekyll/minima) v3 theme.
 
-The modifications to header/footer/addition of facebook comments, etc...
-are all on {% include icon-github.html username="ldemailly" %} / [laurentsv](https://github.com/ldemailly/laurentsv)
+The modifications to header/footer/addition of Facebook comments, etc... are all on <svg class="icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg> ldemailly / [laurentsv](https://github.com/ldemailly/laurentsv)
