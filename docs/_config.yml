@@ -38,3 +38,6 @@ exclude:
 
 minima:
   skin: auto
+  social_links:
+    - { platform: github,  user_url: "https://github.com/ldemailly" }
+    - { platform: twitter, user_url: "https://x.com/LaurentDemailly" }
