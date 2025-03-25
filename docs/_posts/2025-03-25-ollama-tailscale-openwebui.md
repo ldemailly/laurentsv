@@ -48,8 +48,10 @@ Note: I use a binary directly on the host as accessing the tailscale daemon from
 let me know, I'd rather use docker run -d for the proxy too (the image is `fortio/proxy:latest` if you get it working)
 
 ```sh
-proxy -tailscale -default-route localhost:3000
+proxy -tailscale -default-route localhost:3000 -timeout 0
 ```
+
+Setting timeout to 0 allows slow download of new models (infinite max duration, use `-timeout 20m` for 20 minutes for instance)
 
 (ps: on mac/linux you can run it through systemd, or plain `nohup proxy &` to keep it running; on windows `start /b` etc)
 
