@@ -18,7 +18,7 @@ The official guide on this topic is [go.dev/doc/modules/layout](https://go.dev/d
 
 > **Larger** packages or commands **may** benefit from splitting off some functionality into supporting packages. **Initially,** it’s recommended placing such packages into a directory named internal; [...] Since other projects cannot import code from our internal directory, we’re free to refactor its API and generally move things around without breaking external users.
 
-Emphasis on _larger_ and _may_ is mine. And seems to be missed by many. 99% of people do not need `internal/` when, be real, most of what gets written will never be reused much and even if it is, don't worry about over publishing. And the _initially_ is, in my opinion wrong.Initially, make something useful and don't worry that it'll get such great adoption that you're stuck into maintaining your early layout forever, you're not... (see semver point below too).
+Emphasis on _larger_ and _may_ is mine. And seems to be missed by many. 99% of people do not need `internal/` when, be real, most of what gets written will never be reused much and even if it is, don't worry about over publishing. And the _initially_ is, in my opinion wrong. Initially, make something useful and don't worry that it'll get such great adoption that you're stuck into maintaining your early layout forever, you're not... (see semver point below too).
 
 Likewise, you don't need to use `cmd/` when you only have 1 binary (or even a few and no library).
 
@@ -61,7 +61,7 @@ Btw don't get me started with repos that have dozens of packages and files and w
 
 #### util/
 
-Those functions, types, and methods which you think belong in a separate `util/` (or `common/`, or `shared/`, or `lib/`) package simply don't.
+Those functions, types, and methods which you think belong in a separate `util/` (or `common/`, or `shared/`, or `lib/`) package simply don't. Try to put them where they belong, probably near where they are used, or in their own meaningfully named package (e.g applog for your application logging utils).
 
 But Laurent, I'm more comfortable with...
 
@@ -70,6 +70,8 @@ Let me guess, you have more experience writing Java, Python, Ruby, JavaScript, T
 #### Too many packages
 
 You can have more than 1 file in a package/directory in go. You don't need to make a new package each time to separate code/types/... And the more packages the more chances to create a loop or having to later move code around. This being said, moving code around is good and an easy way to grow your code base - later, when needed.
+
+Also please don't make many files with only a few lines in them either, it makes it painful to look at your code.
 
 #### Examples
 
