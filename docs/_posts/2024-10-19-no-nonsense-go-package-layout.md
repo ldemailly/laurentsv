@@ -16,7 +16,7 @@ One key philosophy of Go, is keeping things simple. More code writing, less stru
 
 The official guide on this topic is [go.dev/doc/modules/layout](https://go.dev/doc/modules/layout) - which you should read if you haven't already, then come back here. Despite that reference (and maybe in part because of it) people still tend to over complicate. For instance it says
 
-> **Larger** packages or commands **may** benefit from splitting off some functionality into supporting packages. **Initially,** it’s recommended placing such packages into a directory named internal; [...] Since other projects cannot import code from our internal directory, we’re free to refactor its API and generally move things around without breaking external users.
+> **Larger** packages or commands **may** benefit from splitting off some functionality into supporting packages. **Initially,** it's recommended placing such packages into a directory named internal; [...] Since other projects cannot import code from our internal directory, we're free to refactor its API and generally move things around without breaking external users.
 
 Emphasis on _larger_ and _may_ is mine. And seems to be missed by many. 99% of people do not need `internal/` when, be real, most of what gets written will never be reused much and even if it is, don't worry about over publishing. And the _initially_ is, in my opinion wrong. Initially, make something useful and don't worry that it'll get such great adoption that you're stuck into maintaining your early layout forever, you're not... (see semver point below too).
 
@@ -92,7 +92,7 @@ Language with CLI, libraries and wasm target: [github.com/grol-io/grol](https://
 
 ### But...
 
-This post is partially in response to what I see is over complication in many small projects, which isn’t to say it’s always right or applicable either, but if it gets folks to pause and consider, even to disagree. I think it’s mission accomplished.
+This post is partially in response to what I see is over complication in many small projects, which isn't to say it's always right or applicable either, but if it gets folks to pause and consider, even to disagree. I think it's mission accomplished.
 
 Ping me on gopher slack (Laurent Demailly) or discord (_dl) if you disagree, have comments etc... or open an [issue](https://github.com/ldemailly/laurentsv/issues)
 or comment directly below if you're on facebook.
