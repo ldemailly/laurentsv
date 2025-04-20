@@ -55,7 +55,7 @@ But you don't need that, unless you're shipping code to _a lot_ of third party u
 Any package you put into a pkg directory can be moved to the root.
 `pkg` is a very outdated convention from before `internal/` (and you saw what I think about internal/).
 
-Some people think that having packages at the top, "clutters", the directory. First what does get cluttered if you add unnecessary directory layers is every single import in dozen of files and possibly hundreds of dependencies... think about them! Second, feel free to move the various docs, ancillary files, etc to some subdirectory. Lastly what is 'clutter' really, navigation through the code probably comes through your "godoc" (the excellent [pkg.go.dev](https://pkg.go.dev/), or your self hosted equivalent for private repositories).
+Some people think that having packages at the top, "clutters", the directory. First what does get cluttered if you add unnecessary directory layers in every single import in dozen of files and possibly hundreds of dependencies... think about them! Second, feel free to move the various docs, ancillary files, etc to some subdirectory. Lastly what is 'clutter' really, navigation through the code probably comes through your "godoc" (the excellent [pkg.go.dev](https://pkg.go.dev/), or your self hosted equivalent for private repositories).
 
 Btw don't get me started with repos that have dozens of packages and files and where to see what is going on without an IDE, you have to go: main.go -> some other file -> some init file -> some start function -> some other files... while all this could be in 1 or 2 places, easier to follow and find.
 
