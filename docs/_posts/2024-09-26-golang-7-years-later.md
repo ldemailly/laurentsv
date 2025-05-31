@@ -52,8 +52,7 @@ So let's go over what I learned since, what changed and newer thoughts from many
 
 What I also learned since:
 
-- Use linters, and have a good configuration (hard!) for them: it's a lot easier for a coworker to get told by machine to make a change than to argue about it with another person (same thing as formatting, about consistency, and readability it gives you). My favorite so far
-
+- Use linters, and have a good configuration (hard!) for them: it's a lot easier for a coworker to get told by machine to make a change than to argue about it with another person (same thing as formatting, about consistency, and readability it gives you).
 
 - Annoyance: even with grouped dependabot, dependencies update is quite a chore. But govulncheck, dependabot, linters, bug fixes, etc... help keeping our ecosystem healthy and it has to get done.
 
@@ -73,6 +72,7 @@ What I also learned since:
 - [github.com/fortio/version](https://github.com/fortio/version) and the rest of the fortio ecosystems I hope you can find useful (cli and server shells, dynamic flags, sets, safecast, terminal stuff, etc etc..)
 - [grol.io](https://grol.io/) open source scripting language go syntax like, Tcl spirit like, I've been having fun writing.
 - [No nonsense guide to go package layout](/blog/2024/10/19/no-nonsense-go-package-layout.html)
+- A tool I wrote to help with [Module dependency update order](https://github.com/ldemailly/depgraph#example-dot-output-visualized)
 
 ### But...
 
