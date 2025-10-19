@@ -16,8 +16,8 @@ So while using multi stage builds and `FROM scratch` (which means empty/nothing 
 So here we go, minimal stuff:
 
 ```Dockerfile
-# This as of this writing will pick up 1.22.7 - consider adding sha for security
-FROM golang:1.22 as build
+# This as of this update will pick up 1.24.9 - consider adding sha for security
+FROM golang:1.24 AS build
 WORKDIR /build/src
 # Splitting this makes it a cached layer of your dependencies - it's optional
 COPY go.mod go.sum .
@@ -60,7 +60,7 @@ ps: Skipping the comments and optional step, our Dockerfile is as short and simp
 ### Short and sweet
 
 ```Dockerfile
-FROM golang:1.22 as build
+FROM golang:1.24 AS build
 WORKDIR /build/src
 COPY . .
 RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o app .
