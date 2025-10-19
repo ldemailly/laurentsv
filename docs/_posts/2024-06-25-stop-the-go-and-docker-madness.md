@@ -31,7 +31,7 @@ COPY . .
 # having cmd/foo also makes `go install github.com/yourname/yourepo@latest`
 # not work (or be longer than necessary) when you don't put your main at the top,
 # but if not and if you must replace . (current package) by ./cmd/foo/ next line:
-RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o app .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags=-s -o app .
 # This is the important bit, making for a final image with just your binary:
 FROM scratch
 COPY --from=build /build/src/app /usr/bin/app
@@ -63,7 +63,7 @@ ps: Skipping the comments and optional step, our Dockerfile is as short and simp
 FROM golang:1.24 AS build
 WORKDIR /build/src
 COPY . .
-RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o app .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags=-s -o app .
 FROM scratch
 COPY --from=build /build/src/app /usr/bin/app
 ENTRYPOINT ["/usr/bin/app"]
@@ -73,7 +73,7 @@ ENTRYPOINT ["/usr/bin/app"]
 
 The key piece is `CGO_ENABLED=0` which means your code and dependencies must be pure go (which is a good thing for sanity, safety and performance reasons too) and that enables standalone binaries. I used to have `-a` in there which ages ago and in older `ld` meant static linking, but with CGO off, static linking is what you get and I was kindly pointed out `-a` isn't a thing anymore.
 
-The `-s` (strip) and `-w` (remove dwarf info) in `-ldflags` do reduce the binary size significantly.
+The `-s` (strip) and `-w` (remove dwarf info) in `-ldflags` do reduce the binary size significantly. Likewise since go1.22 `-w` is now implied by `-s` so only `-s` is needed.
 
 And `-trimpath` removes all file system paths from the compiled executable, replacing them with the base names. This helps in creating reproducible builds by eliminating references to the local file paths. It doesn't actually do anything different size wise in this case because the golang base image is using the standard canonical paths, but it would make a small difference when building on a mac with homebrew's go for instance (~32k for fortio).
 
