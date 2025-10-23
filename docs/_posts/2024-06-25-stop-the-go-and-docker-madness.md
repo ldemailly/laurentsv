@@ -94,6 +94,12 @@ in your main - or use [fortio.org/cli](https://pkg.go.dev/fortio.org/cli) for to
 
 And possibly copy a `/etc/mime.types` from the build layer - see the excellent [Xe's adventure](https://xeiaso.net/blog/2024/fixing-rss-mailcap/) about that file.
 
+Also, a reminder that you want
+```go
+    _ "time/tzdata" // load fallback timezone data for use in docker images.
+```
+in your import too if you do anything with timezones (TZ env). Or add `-tags timetzdata` to your go build line.
+
 ### What about ports, volumes etc...
 
 That starts to get more advanced but see the following examples:
