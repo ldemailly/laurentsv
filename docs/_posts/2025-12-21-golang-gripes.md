@@ -23,6 +23,7 @@ Go is so far my favorite programming language. But that doesn't mean I love ever
 - go doc preview improved and yet still not working
 - Need `const` structs, maps, arrays, slices as well as function signatures
 - Small stuff like not having `d` days in durations.
+- Bigger stuff like the date/time format.... 2006/... (and the us centric order too)... what is wrong with people to come up with such an idiotic non standard way
 - Visibility by upper/lower case of first letter is still weird 9 years later
 - `go install -o`
 - Embedded struct init
