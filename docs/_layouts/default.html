@@ -19,7 +19,9 @@
         <div class="fb-like" data-layout="standard" data-href="{{ canonical_page_url }}" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
         {% if page.comments %}
           <p>Comments are welcome:</p>
-          <div class="fb-comments" data-href="{{ canonical_page_url }}" data-width="100%" data-numposts="5"></div>
+          <div style="background: #aaa; min-height: 120px; padding: 2px 0;">
+            <div class="fb-comments" data-href="{{ canonical_page_url }}" data-width="714" data-numposts="5"></div>
+          </div>
         {% endif %}
         {% endif %}
       </div>
